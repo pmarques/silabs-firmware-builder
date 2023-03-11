@@ -1,7 +1,7 @@
 # Silicon Labs firmware builder repository
 
 This repository contains Dockerfiles and GitHub actions which build Silicon Labs
-firmware for Home Assistant Yellow and SkyConnect.
+firmware for Home Assistant Yellow, SkyConnect, and Sonoff ZBDongle-E.
 
 It uses the Silicon Labs Gecko SDK and proprietary Silicon Labs tools such as
 the Silicon Labs Configurator (slc) and the Simplicity Commander standalone
@@ -16,7 +16,7 @@ container local with a build directory bind-mounted, e.g.
 docker run --rm -it \
   --user builder \
   -v $(pwd)/build:/build \
-  ghcr.io/nabucasa/silabs-firmware-builder:4.1.4
+  ghcr.io/ksjh/silabs-firmware-builder:4.2.2
 ```
 
 To generate a project, use `slc generate`. To replicate/debug build issues in
