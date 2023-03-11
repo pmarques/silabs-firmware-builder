@@ -12,7 +12,7 @@ on:
       - '*'
 
 env:
-  sdk_version: 4.2.1
+  sdk_version: 4.2.2
 
 jobs:
   build-container:
@@ -33,9 +33,9 @@ jobs:
         with:
           context: .
           file: Dockerfile
-          tags: ghcr.io/nabucasa/silabs-firmware-builder:${{ env.sdk_version }}
-          cache-from: ghcr.io/nabucasa/silabs-firmware-builder:cache-${{ env.sdk_version }}
-          cache-to: ghcr.io/nabucasa/silabs-firmware-builder:cache-${{ env.sdk_version }}
+          tags: ghcr.io/ksjh/silabs-firmware-builder:${{ env.sdk_version }}
+          cache-from: ghcr.io/ksjh/silabs-firmware-builder:cache-${{ env.sdk_version }}
+          cache-to: ghcr.io/ksjh/silabs-firmware-builder:cache-${{ env.sdk_version }}
           push: true
           build-args:
             "GECKO_SDK_VERSION=v${{ env.sdk_version }}"
@@ -67,7 +67,7 @@ jobs:
         EMBER_SOURCE_ROUTE_TABLE_SIZE:200,
       patchpath: ${{ matrix.patchpath }}
       extra_c_defs: "'-DEMBER_ADDRESS_TABLE_SIZE=16' '-DEMBER_MULTICAST_TABLE_SIZE=16'"
-      sdk_version: 4.2.1
+      sdk_version: 4.2.2
       metadata_fw_type: "ncp-uart-hw"
       metadata_extra: "{ \"ezsp_version\": \"7.2.1.0\" }"
 
@@ -85,6 +85,10 @@ jobs:
             device: EFR32MG21A020F512IM32
             components: cpc_security_secondary_none
             patchpath: "RCPMultiPAN/SkyConnect"
+          - target: zbdonglee
+            device: EFR32MG21A020F768IM32
+            components: cpc_security_secondary_none
+            patchpath: "RCPMultiPAN/ZBDongleE"
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
       firmware_name: rcp-uart-802154-${{ matrix.target }}
@@ -93,5 +97,5 @@ jobs:
       device: ${{ matrix.device }}
       components: ${{ matrix.components }}
       patchpath: ${{ matrix.patchpath }}
-      sdk_version: 4.2.1
+      sdk_version: 4.2.2
       metadata_fw_type: "rcp-uart-802154"
