@@ -2,7 +2,6 @@
 
 This repository contains Dockerfiles and GitHub actions which build Silicon Labs
 firmware for Home Assistant Yellow, SkyConnect, ZB-GW04 v1.1, ZB-GW04 v1.2, and Sonoff ZBDongle-E.
-The current build process generates only RCPMultiPAN firmware files. Optional firmware files for dongles supporting RTC/CTS hardware flow control with 230400 baud are also generated.
 
 It uses the Silicon Labs Gecko SDK and proprietary Silicon Labs tools such as
 the Silicon Labs Configurator (slc) and the Simplicity Commander standalone
