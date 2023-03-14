@@ -8,7 +8,7 @@ It uses the Silicon Labs Gecko SDK and proprietary Silicon Labs tools such as
 the Silicon Labs Configurator (slc) and the Simplicity Commander standalone
 utility.
 
-Currently, only **RCPMultiPAN** firmware for use concurrent communication over Zigbee and Thread is built. It can be used with the Home Assistant [SiliconLabs Zigbee/OpenThread Multiprotocol](https://github.com/home-assistant/addons/tree/master/silabs-multiprotocol) add-on.
+Both **RCP Multi-PAN** firmware for use concurrent communication over Zigbee and Thread and **EmberZNet NCP** firmware is built. The **RCP Multi-PAN** firmware can be used with the Home Assistant [SiliconLabs Zigbee/OpenThread Multiprotocol](https://github.com/home-assistant/addons/tree/master/silabs-multiprotocol) add-on, whereas the **EmberZNet NCP** version is used in pure Zigbee environments. 
 
 ## Building locally
 
@@ -26,26 +26,11 @@ To generate a project, use `slc generate`. To replicate/debug build issues in
 an existing GitHub action, it is often helpful to just copy the command from
 the "Generate Firmware Project" step.
 
-```sh
-  slc generate \
-      --with="MGM210PA32JIA,simple_led:board_activity" \
-      --project-file="/gecko_sdk/protocol/openthread/sample-apps/ot-ncp/rcp-uart-802154.slcp" \
-      --export-destination=rcp-uart-802154-yellow \
-      --copy-proj-sources --new-project --force \
-      --configuration=""
-```
-
-Then build it using commands from the "Build Firmware" step:
-
-```sh
-cd rcp-uart-802154-yellow
-make -f rcp-uart-802154.Makefile release
-```
-
 ## Pre-compiled firmware files
 Pre-compiled firmware files are available on github. The github actions build them automatically after commits to the repo. On the top of the github page, under "Actions", you can find previous runs and "Artifacts" (lower part of the page of one run). 
 
 ## Naming convention of pre-build firmware
-The names of the resulting files are not completely self-explanatory. The file ``rcp-uart-802154-zbdonglee.zip`` is the right one for a Sonoff ZBDongle-E with RTS-CTS handshaking with 115200 baud. Among other things, it contains the required firmware file ``build/release/rcp-uart-802154.gbl``. The naming convention is similar for other hardware.
+The names of the resulting files are not completely self-explanatory. The file ``rcp-uart-802154-zbdonglee.zip`` is the RCP Multi-PAN version for a Sonoff ZBDongle-E with RTS-CTS handshaking with 115200 baud, whereas the file ``ncp-uart-hw-zb-gw04-1v2-230.zip`` contains EmberZNet firmware for the ZB-GW04 hardware version 1.2 with RTS-CTS handshaking with 230400 baud.
+The naming convention is similar for other hardware. The firmware for the ZB-GW04 v1.1 is the only variant that, due to hardware limitations, does **not** use hardware (RTS-CTS) handshaking, all other do.
 
-The ZB-GW04 v1.1 is the only firmware file that does **not** use hardware (RTS-CTS) handshaking.
+These zip files contain the required gbl firmware files in ``build/release/``.
