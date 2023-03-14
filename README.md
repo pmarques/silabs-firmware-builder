@@ -39,3 +39,11 @@ Then build it using commands from the "Build Firmware" step:
 cd rcp-uart-802154-yellow
 make -f rcp-uart-802154.Makefile release
 ```
+
+## Pre-compiled firmware files
+Pre-compiled firmware files are available on github. The github actions build them automatically after commits to the repo. On the top of the github page, under "Actions", you can find previous runs and "Artifacts" (lower part of the page of one run). 
+
+## Naming convention of pre-build firmware
+The names of the resulting files are not completely self-explanatory. The file ``rcp-uart-802154-zbdonglee.zip`` is the right one for a Sonoff ZBDongle-E with RTS-CTS handshaking with 115200 baud. Among other things, it contains the required firmware file ``build/release/rcp-uart-802154.gbl``. The naming convention is similar for other hardware.
+
+The ZB-GW04 v1.1 is the only firmware file that does **not** use hardware (RTS-CTS) handshaking.
