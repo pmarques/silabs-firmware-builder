@@ -8,6 +8,8 @@ It uses the Silicon Labs Gecko SDK and proprietary Silicon Labs tools such as
 the Silicon Labs Configurator (slc) and the Simplicity Commander standalone
 utility.
 
+Currently, only **RCPMultiPAN** firmware for use concurrent communication over Zigbee and Thread is built. It can be used with the Home Assistant [SiliconLabs Zigbee/OpenThread Multiprotocol](https://github.com/home-assistant/addons/tree/master/silabs-multiprotocol) add-on.
+
 ## Building locally
 
 To build a firmware locally the build container can be reused. Simply start the
