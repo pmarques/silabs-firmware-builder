@@ -55,6 +55,21 @@ jobs:
           - target: skyconnect
             device: EFR32MG21A020F512IM32
             patchpath: "EmberZNet/SkyConnect"
+          - target: zbdonglee
+            device: EFR32MG21A020F768IM32
+            patchpath: "EmberZNet/ZBDongleE"
+          - target: zbdonglee-230
+            device: EFR32MG21A020F768IM32
+            patchpath: "EmberZNet/ZBDongleE-230"
+          - target: zb-gw04-1v1
+            device: EFR32MG21A020F768IM32
+            patchpath: "EmberZNet/ZB-GW04-1v1"
+          - target: zb-gw04-1v2
+            device: EFR32MG21A020F768IM32
+            patchpath: "EmberZNet/ZB-GW04-1v2"
+          - target: zb-gw04-1v2-230
+            device: EFR32MG21A020F768IM32
+            patchpath: "EmberZNet/ZB-GW04-1v2-230"
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
       firmware_name: ncp-uart-hw-${{ matrix.target }}
