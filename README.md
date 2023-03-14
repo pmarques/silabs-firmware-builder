@@ -12,7 +12,7 @@ Both **RCP Multi-PAN** firmware for use concurrent communication over Zigbee and
 ## Building locally
 
 To build a firmware locally the build container can be reused. Simply start the
-container local with a build directory bind-mounted, e.g.
+container local with a build directory bind-mounted, e.g.,
 
 ```sh
 docker run --rm -it \
@@ -24,6 +24,44 @@ docker run --rm -it \
 To generate a project, use `slc generate`. To replicate/debug build issues in
 an existing GitHub action, it is often helpful to just copy the command from
 the "Generate Firmware Project" step.
+
+To generate a project for the RCP Multi-PAN firmware for a ZBDongle-E, you can use:
+
+```sh
+slc generate \
+  --with="EFR32MG21A020F768IM32,cpc_security_secondary_none" \
+  --project-file="/gecko_sdk/protocol/openthread/sample-apps/ot-ncp/rcp-uart-802154.slcp" \
+  --export-destination=rcp-uart-802154-zbdonglee \
+  --copy-proj-sources --new-project --force \
+  --configuration=""
+```
+
+Building the project requires some more steps:
+
+```sh
+cd rcp-uart-802154-zbdonglee
+
+for patch in "../RCPMultiPAN/ZBDongleE"/*.patch
+do
+  echo "Applying ${patch}"
+  patch -p1 < $patch
+done
+
+make -f rcp-uart-802154.Makefile release
+
+jq --null-input \
+ --arg sdk_version "4.2.2" \
+ --argjson metadata_extra 'null' \
+ '{
+    "metadata_version": 1,
+    "sdk_version": $sdk_version,
+    "fw_type": "rcp-uart-802154"
+  } + $metadata_extra' >  version.json
+
+commander gbl create build/release/rcp-uart-802154.gbl \
+  --app build/release/rcp-uart-802154.out \
+  --device EFR32MG21A020F768IM32 --metadata version.json
+```
 
 ## Pre-compiled firmware files
 Pre-compiled firmware files are available on github. The github actions build them automatically after commits to the repo. On the top of the github page, under "Actions", you can find previous runs and "Artifacts" (lower part of the page of one run). 
