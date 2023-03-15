@@ -61,6 +61,9 @@ jobs:
           - target: zbdonglee-230
             device: EFR32MG21A020F768IM32
             patchpath: "EmberZNet/ZBDongleE-230"
+          - target: zbdonglee-none
+            device: EFR32MG21A020F768IM32
+            patchpath: "EmberZNet/ZBDongleE-none"
           - target: zb-gw04-1v1
             device: EFR32MG21A020F768IM32
             patchpath: "EmberZNet/ZB-GW04-1v1"
@@ -110,6 +113,10 @@ jobs:
             device: EFR32MG21A020F768IM32
             components: cpc_security_secondary_none
             patchpath: "RCPMultiPAN/ZBDongleE-230"
+          - target: zbdonglee-none
+            device: EFR32MG21A020F768IM32
+            components: cpc_security_secondary_none
+            patchpath: "RCPMultiPAN/ZBDongleE-none"
           - target: zb-gw04-1v1
             device: EFR32MG21A020F768IM32
             components: cpc_security_secondary_none
