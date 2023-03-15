@@ -11,8 +11,9 @@ Both **RCP Multi-PAN** firmware for use concurrent communication over Zigbee and
 
 ## Building locally
 
-To build a firmware locally the build container can be reused. Simply start the
-container local with a build directory bind-mounted, e.g.,
+To build a firmware locally, the build container can be reused. The **package** ``silabs-firmware-builder`` 
+on the right-hand side of the github page explains how to reuse the pre-built docker container. You can then start the
+container locally with a build directory bind-mounted, e.g.,
 
 ```sh
 docker run --rm -it \
