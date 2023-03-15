@@ -7,12 +7,12 @@ It uses the Silicon Labs Gecko SDK and proprietary Silicon Labs tools such as
 the Silicon Labs Configurator (slc) and the Simplicity Commander standalone
 utility.
 
-Both **RCP Multi-PAN** firmware for use concurrent communication over Zigbee and Thread and **EmberZNet NCP** firmware is built. The **RCP Multi-PAN** firmware can be used with the Home Assistant [SiliconLabs Zigbee/OpenThread Multiprotocol](https://github.com/home-assistant/addons/tree/master/silabs-multiprotocol) add-on, whereas the **EmberZNet NCP** version is used in pure Zigbee environments. 
+Both **RCP Multi-PAN** firmware for use concurrent communication over Zigbee and Thread and **EmberZNet NCP** firmware are built. The **RCP Multi-PAN** firmware can be used with the Home Assistant [SiliconLabs Zigbee/OpenThread Multiprotocol](https://github.com/home-assistant/addons/tree/master/silabs-multiprotocol) add-on, whereas the **EmberZNet NCP** version is used in pure Zigbee environments. 
 
 ## Building locally
 
-To build a firmware locally, the build container can be reused. The **package** ``silabs-firmware-builder`` 
-on the right-hand side of the github page explains how to reuse the pre-built docker container. You can then start the
+To build a firmware locally, the build container can be reused. The page for the **package** ``silabs-firmware-builder`` 
+on the right-hand side of the github page shows how to reuse the pre-built docker container. You can then start the
 container locally with a build directory bind-mounted, e.g.,
 
 ```sh
