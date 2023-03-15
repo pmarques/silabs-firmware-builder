@@ -46,7 +46,7 @@ jobs:
     name: Build firmware
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/ksjh/silabs-firmware-builder:${{ inputs.sdk_version }}
+      image: ghcr.io/${{ github.repository }}:${{ inputs.sdk_version }}
       options: --user root
     defaults:
       run:
