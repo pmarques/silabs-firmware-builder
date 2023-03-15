@@ -68,7 +68,8 @@ commander gbl create build/release/rcp-uart-802154.gbl \
 Pre-compiled firmware files are available on github. The github actions build them automatically after commits to the repo. On the top of the github page, under "Actions", you can find previous runs and "Artifacts" (lower part of the page of one run). 
 
 ## Naming convention of pre-build firmware
-The names of the resulting files are not completely self-explanatory. The file ``rcp-uart-802154-zbdonglee.zip`` is the RCP Multi-PAN version for a Sonoff ZBDongle-E with RTS-CTS handshaking with 115200 baud, whereas the file ``ncp-uart-hw-zb-gw04-1v2-230.zip`` contains EmberZNet firmware for the ZB-GW04 hardware version 1.2 with RTS-CTS handshaking with 230400 baud.
-The naming convention is similar for other hardware. The firmware for the ZB-GW04 v1.1 is the only variant that, due to hardware limitations, does **not** use hardware (RTS-CTS) handshaking, all other do.
+The names of the resulting files are not completely self-explanatory. The file ``rcp-uart-802154-zbdonglee.zip`` is the RCP Multi-PAN version for a Sonoff ZBDongle-E with RTS-CTS handshaking with 115200 baud, whereas the file ``ncp-uart-hw-zb-gw04-1v2-230.zip`` contains EmberZNet firmware for the ZB-GW04 hardware version 1.2 with RTS-CTS handshaking with 230400 baud. The naming convention is similar for other hardware. 
+
+The firmware for the ZB-GW04 v1.1 and variants ending in ``-none`` for other hardware are firmware files that do **not** use hardware (RTS-CTS) handshaking, all other do.
 
 These zip files contain the required gbl firmware files in ``build/release/``.
