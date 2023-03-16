@@ -9,7 +9,7 @@ It uses the Silicon Labs Gecko SDK and proprietary Silicon Labs tools such as
 the Silicon Labs Configurator (slc) and the Simplicity Commander standalone
 utility.
 
-Both **RCP Multi-PAN** firmware for use concurrent communication over Zigbee and Thread and **EmberZNet NCP** firmware are built. The **RCP Multi-PAN** firmware can be used with the Home Assistant [SiliconLabs Zigbee/OpenThread Multiprotocol](https://github.com/home-assistant/addons/tree/master/silabs-multiprotocol) add-on, whereas the **EmberZNet NCP** version is used in pure Zigbee environments. 
+**RCP Multi-PAN** firmware for use concurrent communication over Zigbee and Thread, **EmberZNet NCP** for Zigbee-only environments, and **experimental OpenThread RCP** firmware for Thread-only use are built. The **RCP Multi-PAN** firmware can be used with the Home Assistant [SiliconLabs Zigbee/OpenThread Multiprotocol](https://github.com/home-assistant/addons/tree/master/silabs-multiprotocol) add-on, whereas the **EmberZNet NCP** version is used in pure Zigbee environments. **Please be sure to read the warning** below if you plan to use the **OpenThread RCP** builds.
 
 ## Building locally
 
