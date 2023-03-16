@@ -3,6 +3,8 @@
 This repository contains Dockerfiles and GitHub actions which build Silicon Labs
 firmware for Home Assistant Yellow, SkyConnect, ZB-GW04 v1.1, ZB-GW04 v1.2, and Sonoff ZBDongle-E.
 
+It is a fork of the [NabuCasa silabs firmware builder](https://github.com/NabuCasa/silabs-firmware-builder), all credits go to [NabuCasa](https://github.com/NabuCasa) and [agners](https://github.com/agners). I just extended their work for other hardware. 
+
 It uses the Silicon Labs Gecko SDK and proprietary Silicon Labs tools such as
 the Silicon Labs Configurator (slc) and the Simplicity Commander standalone
 utility.
@@ -72,4 +74,7 @@ The names of the resulting files are not completely self-explanatory. The file `
 
 The firmware for the ZB-GW04 v1.1 and variants ending in ``-none`` for other hardware are firmware files that do **not** use hardware (RTS-CTS) handshaking, all other do.
 
-These zip files contain the required gbl firmware files in ``build/release/``.
+All these zip files contain the required gbl firmware files in ``build/release/``.
+
+### Attention:
+The ``ot-rcp-`` files are **experimental** pure OpenThread RCP builds without Zigbee support. **Please use them with extreme care**, as with some hardware, there might be currently **no easy way to flash other firmware** after having flashed the ot-rcp firmware. **Please use these files only when you know what you are doing.**
