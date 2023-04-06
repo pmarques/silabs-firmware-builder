@@ -103,7 +103,7 @@ jobs:
       - name: Generate gbl Firmware
         run: |
           cd ${{ inputs.firmware_name }}
-          commander gbl create build/release/${{ inputs.project_name }}.gbl \
+          commander gbl create build/release/${{ inputs.firmware_name }}.gbl \
                     --app build/release/${{ inputs.project_name }}.out \
                     --device ${{ inputs.device }} --metadata version.json
 
@@ -111,4 +111,4 @@ jobs:
         if: success() || failure()
         with:
           name: ${{ inputs.firmware_name }}
-          path: ${{ inputs.firmware_name }}
+          path: ${{ inputs.firmware_name }}/build/release/${{ inputs.firmware_name }}.gbl
