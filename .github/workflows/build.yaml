@@ -7,7 +7,7 @@ on:
       - .github/workflows/build.yaml
       - .github/workflows/silabs-firmware-build.yaml
     branches:
-      - main
+      - ZBDongle-E
     tags:
       - '*'
   workflow_dispatch:
