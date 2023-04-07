@@ -163,6 +163,7 @@ jobs:
       device: ${{ matrix.device }}
       components: ${{ matrix.components }}
       patchpath: ${{ matrix.patchpath }}
+      sdkpatchpath: "RCPMultiPAN/GeckoSDK"
       sdk_version: 4.2.2
       metadata_fw_type: "rcp-uart-802154"
       metadata_extra: ${{ matrix.metadata_extra }}
