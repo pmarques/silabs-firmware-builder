@@ -237,3 +237,25 @@ jobs:
       metadata_fw_type: "ot-rcp"
       metadata_extra: ${{ matrix.metadata_extra }}
 
+  collect_artifacts:
+    name: download and publish all artifacts
+    runs-on: ubuntu-latest
+    needs: [ezsp-firmware-build, rcp-multi-pan-firmware-build, ot-rcp-firmware-build]
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - uses: actions/download-artifact@v3
+        with:
+          path: firmware_builds
+      - name: Reorganise artifact structure
+        run: |
+          mv */*.gbl .
+          rm -rf */
+          ls
+        working-directory: firmware_builds
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Update firmware builds
+          file_pattern: firmware_builds/*.gbl
+
+
+
