@@ -245,7 +245,7 @@ jobs:
         working-directory: firmware_builds
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Update firmware builds no change test
+          commit_message: Update firmware builds
           file_pattern: firmware_builds/*.gbl
 
 

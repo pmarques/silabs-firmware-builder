@@ -53,6 +53,8 @@ jobs:
         shell: su --shell=/bin/bash builder {0}
     steps:
       - uses: actions/checkout@v3.3.0
+      - name: test-env
+        run: echo ${{ env.sdk_version }}
       - name: Adjust permission
         shell: bash
         run: chown builder .
