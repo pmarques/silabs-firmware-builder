@@ -173,12 +173,12 @@ jobs:
             device: MGM210PA32JIA
             components: simple_led:board_activity,bootloader_interface
             patchpath: "OpenThreadRCP/Yellow"
-            metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\", \"baudrate\": 115200 }"
+            metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\", \"baudrate\": 460800 }"
           - target: skyconnect
             device: EFR32MG21A020F512IM32
             components: bootloader_interface
             patchpath: "OpenThreadRCP/SkyConnect"
-            metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\", \"baudrate\": 115200 }"
+            metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\", \"baudrate\": 460800 }"
           - target: zbdonglee
             device: EFR32MG21A020F768IM32
             components: bootloader_interface
