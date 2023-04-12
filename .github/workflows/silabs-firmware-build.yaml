@@ -53,8 +53,6 @@ jobs:
         shell: su --shell=/bin/bash builder {0}
     steps:
       - uses: actions/checkout@v3.3.0
-      - name: test-env
-        run: echo ${{ env.sdk_version }}
       - name: Adjust permission
         shell: bash
         run: chown builder .
@@ -66,6 +64,16 @@ jobs:
               --export-destination=${{ inputs.firmware_name }} \
               --copy-proj-sources --copy-sdk-sources --new-project --force \
               --configuration="${{ inputs.configuration }}"
+
+      - name: Set Baudrate
+        env:
+          baudrate: ${{ fromJSON(inputs.metadata_extra).baudrate }}
+        if: ${{ env.baudrate != 115200 }}
+        run: |
+          cd ${{ inputs.firmware_name }}
+          sed -Ei "s/^(\s*#define SL_\S+_VCOM_BAUDRATE\s+)[0-9]+/\\1$baudrate/" \
+              config/sl_*usart_vcom_config.h
+
       - name: Patch Firmware
         if: "${{ inputs.patchpath != '' }}"
         run: |
