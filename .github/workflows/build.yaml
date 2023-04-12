@@ -63,7 +63,7 @@ jobs:
             metadata_extra: "{ \"ezsp_version\": \"7.2.2.0\", \"baudrate\": 115200 }"
           - target: zbdonglee-230
             device: EFR32MG21A020F768IM32
-            patchpath: "EmberZNet/ZBDongleE-230"
+            patchpath: "EmberZNet/ZBDongleE"
             metadata_extra: "{ \"ezsp_version\": \"7.2.2.0\", \"baudrate\": 230400 }"
           - target: zbdonglee-none
             device: EFR32MG21A020F768IM32
@@ -79,7 +79,7 @@ jobs:
             metadata_extra: "{ \"ezsp_version\": \"7.2.2.0\", \"baudrate\": 115200 }"
           - target: zb-gw04-1v2-230
             device: EFR32MG21A020F768IM32
-            patchpath: "EmberZNet/ZB-GW04-1v2-230"
+            patchpath: "EmberZNet/ZB-GW04-1v2"
             metadata_extra: "{ \"ezsp_version\": \"7.2.2.0\", \"baudrate\": 230400 }"
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
@@ -123,12 +123,12 @@ jobs:
           - target: zbdonglee-230
             device: EFR32MG21A020F768IM32
             components: cpc_security_secondary_none
-            patchpath: "RCPMultiPAN/ZBDongleE-230"
+            patchpath: "RCPMultiPAN/ZBDongleE"
             metadata_extra: "{ \"baudrate\": 230400 }"
           - target: zbdonglee-460
             device: EFR32MG21A020F768IM32
             components: cpc_security_secondary_none
-            patchpath: "RCPMultiPAN/ZBDongleE-460"
+            patchpath: "RCPMultiPAN/ZBDongleE"
             metadata_extra: "{ \"baudrate\": 460800 }"
           - target: zb-gw04-1v1
             device: EFR32MG21A020F768IM32
@@ -143,12 +143,12 @@ jobs:
           - target: zb-gw04-1v2-230
             device: EFR32MG21A020F768IM32
             components: cpc_security_secondary_none
-            patchpath: "RCPMultiPAN/ZB-GW04-1v2-230"
+            patchpath: "RCPMultiPAN/ZB-GW04-1v2"
             metadata_extra: "{ \"baudrate\": 230400 }"
           - target: zb-gw04-1v2-460
             device: EFR32MG21A020F768IM32
             components: cpc_security_secondary_none
-            patchpath: "RCPMultiPAN/ZB-GW04-1v2-460"
+            patchpath: "RCPMultiPAN/ZB-GW04-1v2"
             metadata_extra: "{ \"baudrate\": 460800 }"
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
@@ -187,12 +187,12 @@ jobs:
           - target: zbdonglee-230
             device: EFR32MG21A020F768IM32
             components: bootloader_interface
-            patchpath: "OpenThreadRCP/ZBDongleE-230"
+            patchpath: "OpenThreadRCP/ZBDongleE"
             metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\", \"baudrate\": 230400 }"
           - target: zbdonglee-460
             device: EFR32MG21A020F768IM32
             components: bootloader_interface
-            patchpath: "OpenThreadRCP/ZBDongleE-460"
+            patchpath: "OpenThreadRCP/ZBDongleE"
             metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\", \"baudrate\": 460800 }"
           - target: zb-gw04-1v1
             device: EFR32MG21A020F768IM32
@@ -207,12 +207,12 @@ jobs:
           - target: zb-gw04-1v2-230
             device: EFR32MG21A020F768IM32
             components: bootloader_interface
-            patchpath: "OpenThreadRCP/ZB-GW04-1v2-230"
+            patchpath: "OpenThreadRCP/ZB-GW04-1v2"
             metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\", \"baudrate\": 230400 }"
           - target: zb-gw04-1v2-460
             device: EFR32MG21A020F768IM32
             components: bootloader_interface
-            patchpath: "OpenThreadRCP/ZB-GW04-1v2-460"
+            patchpath: "OpenThreadRCP/ZB-GW04-1v2"
             metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\", \"baudrate\": 460800 }"
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
