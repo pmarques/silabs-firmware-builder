@@ -54,6 +54,7 @@ jobs:
         target: [zbdonglee, zbdonglee-none, zb-gw04-1v2]
         baudrate: [115200, 230400]
         include:
+          - components: simple_led:board_activity
           - device: EFR32MG21A020F768IM32
           - target: zbdonglee
             patchpath: "EmberZNet/ZBDongleE"
@@ -100,7 +101,7 @@ jobs:
         target: [zbdonglee, zb-gw04-1v2]
         baudrate: [115200, 230400, 460800, 921600]
         include:
-          - components: cpc_security_secondary_none
+          - components: simple_led:board_activity,cpc_security_secondary_none
           - device: EFR32MG21A020F768IM32
           - target: zbdonglee
             patchpath: "RCPMultiPAN/ZBDongleE"
@@ -137,7 +138,7 @@ jobs:
         target: [zbdonglee, zb-gw04-1v2]
         baudrate: [115200, 230400, 460800]
         include:
-          - components: bootloader_interface
+          - components: simple_led:board_activity,bootloader_interface
           - device: EFR32MG21A020F768IM32
           - target: zbdonglee
             patchpath: "OpenThreadRCP/ZBDongleE"
