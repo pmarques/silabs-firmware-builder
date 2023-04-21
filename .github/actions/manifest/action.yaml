@@ -1,0 +1,17 @@
+name: 'Process Manifests'
+description: 'Process manifests for input to matrix'
+inputs:
+  path:
+    description: 'Location of manifest files'
+    required: false
+    default: './manifests'
+outputs:
+  rcp_matrix:
+    description: 'matrix config for rcp firmware'
+  ncp_matrix:
+    description: 'matrix config for ncp firmware'
+  ot_matrix:
+    description: 'matrix config for openthread firmware'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
