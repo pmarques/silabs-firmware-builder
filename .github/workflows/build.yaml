@@ -46,32 +46,40 @@ jobs:
           build-args:
             "GECKO_SDK_VERSION=v${{ env.sdk_version }}"
 
+  build-matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      ncp_matrix: ${{ steps.process.outputs.ncp_matrix }}
+      rcp_matrix: ${{ steps.process.outputs.rcp_matrix }}
+      ot_matrix: ${{ steps.process.outputs.ot_matrix }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Process manifests
+        id: process
+        uses: ./.github/actions/manifest
+      - name: debug
+        run: |
+          echo "NCP matrix ------------"
+          echo "${{ toJSON(fromJSON(steps.process.outputs.ncp_matrix)) }}"
+          echo "RCP matrix ------------"
+          echo "${{ toJSON(fromJSON(steps.process.outputs.rcp_matrix)) }}"
+          echo "OT matrix ------------"
+          echo "${{ toJSON(fromJSON(steps.process.outputs.ot_matrix)) }}"
+
   ezsp-firmware-build:
     name: EmberZNet NCP
-    needs: build-container
+    needs: [build-container, build-matrix]
     strategy:
       matrix:
-        target: [zbdonglee, zbdonglee-none, zb-gw04-1v2]
+        target: [zbdonglee, zb-gw04-1v2, yellow, skyconnect]
         baudrate: [115200, 230400]
-        include:
-          - device: EFR32MG21A020F768IM32
-          - target: zbdonglee
-            patchpath: "EmberZNet/ZBDongleE"
-          - target: zbdonglee-none
-            patchpath: "EmberZNet/ZBDongleE-none"
-          - target: zb-gw04-1v2
-            patchpath: "EmberZNet/ZB-GW04-1v2"
-          - target: yellow
-            device: MGM210PA32JIA
-            components: simple_led:board_activity
-            patchpath: "EmberZNet/Yellow"
-            baudrate: 115200
-          - target: skyconnect
-            device: EFR32MG21A020F512IM32
-            patchpath: "EmberZNet/SkyConnect"
-            baudrate: 115200
+        include: ${{ fromJson(needs.build-matrix.outputs.ncp_matrix) }}
         exclude:
           - target: zbdonglee-none
+            baudrate: 230400
+          - target: yellow
+            baudrate: 230400
+          - target: skyconnect
             baudrate: 230400
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
@@ -80,13 +88,9 @@ jobs:
       project_name: "ncp-uart-hw"
       device: ${{ matrix.device }}
       components: ${{ matrix.components }}
-      configuration:  |
-        SL_IOSTREAM_USART_VCOM_RX_BUFFER_SIZE:64,
-        EMBER_APS_UNICAST_MESSAGE_COUNT:20,
-        EMBER_NEIGHBOR_TABLE_SIZE:26,
-        EMBER_SOURCE_ROUTE_TABLE_SIZE:200,
-      patchpath: ${{ matrix.patchpath }}
-      extra_c_defs: "'-DEMBER_ADDRESS_TABLE_SIZE=16' '-DEMBER_MULTICAST_TABLE_SIZE=16'"
+      configuration: ${{ matrix.configuration }}
+      patchpath: "EmberZNet/${{ matrix.name }}"
+      extra_c_defs: ${{ matrix.extra_c_defs }}
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       metadata_fw_type: "ncp-uart-hw"
       baudrate: ${{ matrix.baudrate }}
@@ -94,28 +98,19 @@ jobs:
 
   rcp-multi-pan-firmware-build:
     name: RCP Multi-PAN
-    needs: build-container
+    needs: [build-container, build-matrix]
     strategy:
+      fail-fast: false
       matrix:
-        target: [zbdonglee, zb-gw04-1v2]
-        baudrate: [115200, 230400, 460800, 921600]
-        include:
-          - components: cpc_security_secondary_none
-          - device: EFR32MG21A020F768IM32
-          - target: zbdonglee
-            patchpath: "RCPMultiPAN/ZBDongleE"
-          - target: zb-gw04-1v2
-            patchpath: "RCPMultiPAN/ZB-GW04-1v2"
+        target: [zbdonglee, zb-gw04-1v2, yellow, skyconnect]
+        baudrate: [460800, 921600]
+        include: ${{ fromJson(needs.build-matrix.outputs.rcp_matrix) }}
+        exclude:
+          - target: zbdongle-none
           - target: yellow
-            device: MGM210PA32JIA
-            components: simple_led:board_activity,cpc_security_secondary_none
-            patchpath: "RCPMultiPAN/Yellow"
-            baudrate: 460800
+            baudrate: 921600
           - target: skyconnect
-            device: EFR32MG21A020F512IM32
-            components: cpc_security_secondary_none
-            patchpath: "RCPMultiPAN/SkyConnect"
-            baudrate: 460800
+            baudrate: 921600
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
       firmware_name: rcp-uart-802154-${{ matrix.target }}-${{ matrix.baudrate }}
@@ -123,36 +118,28 @@ jobs:
       project_name: "rcp-uart-802154"
       device: ${{ matrix.device }}
       components: ${{ matrix.components }}
-      patchpath: ${{ matrix.patchpath }}
+      configuration: ${{ matrix.configuration }}
+      patchpath: "RCPMultiPAN/${{ matrix.name }}"
       sdkpatchpath: "RCPMultiPAN/GeckoSDK"
+      extra_c_defs: ${{ matrix.extra_c_defs }}
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       baudrate: ${{ matrix.baudrate }}
       metadata_fw_type: "rcp-uart-802154"
 
   ot-rcp-firmware-build:
     name: OpenThread RCP
-    needs: build-container
+    needs: [build-container, build-matrix]
     strategy:
+      fail-fast: false
       matrix:
-        target: [zbdonglee, zb-gw04-1v2]
-        baudrate: [115200, 230400, 460800]
-        include:
-          - components: bootloader_interface
-          - device: EFR32MG21A020F768IM32
-          - target: zbdonglee
-            patchpath: "OpenThreadRCP/ZBDongleE"
-          - target: zb-gw04-1v2
-            patchpath: "OpenThreadRCP/ZB-GW04-1v2"
+        target: [zbdonglee, zb-gw04-1v2, yellow, skyconnect]
+        baudrate: [230400, 460800]
+        include: ${{ fromJson(needs.build-matrix.outputs.ot_matrix) }}
+        exclude:
           - target: yellow
-            device: MGM210PA32JIA
-            components: simple_led:board_activity,bootloader_interface
-            patchpath: "OpenThreadRCP/Yellow"
-            baudrate: 460800
+            baudrate: 230400
           - target: skyconnect
-            device: EFR32MG21A020F512IM32
-            components: bootloader_interface
-            patchpath: "OpenThreadRCP/SkyConnect"
-            baudrate: 460800
+            baudrate: 230400
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
       firmware_name: ot-rcp-${{ matrix.target }}-${{ matrix.baudrate }}
@@ -160,9 +147,10 @@ jobs:
       project_name: "ot-rcp"
       device: ${{ matrix.device }}
       components: ${{ matrix.components }}
-      patchpath: ${{ matrix.patchpath }}
+      configuration: ${{ matrix.configuration }}
+      patchpath: "OpenThreadRCP/${{ matrix.name }}"
       sdkpatchpath: "OpenThreadRCP/GeckoSDK"
-      extra_c_defs: "'-DOPENTHREAD_CONFIG_NCP_REBOOT_BOOTLOADER_ENABLE=1'"
+      extra_c_defs: ${{ matrix.extra_c_defs }}
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       metadata_fw_type: "ot-rcp"
       baudrate: ${{ matrix.baudrate }}
