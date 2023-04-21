@@ -6,6 +6,8 @@ inputs:
     required: false
     default: './manifests'
 outputs:
+  targets:
+    description: list of targets to build
   rcp_matrix:
     description: 'matrix config for rcp firmware'
   ncp_matrix:

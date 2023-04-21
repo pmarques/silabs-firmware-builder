@@ -22535,12 +22535,14 @@ async function main() {
     const files = await globber.glob();
 
     let fw = {};
+    let targets = [];
     const types = ['ncp-uart-hw','rcp-uart-802154', 'ot-rcp'];
     for (const t of types){ fw[t] = []; }
 
     for (const file of files) {
         let obj = require(file);
         let manifest = defaultsDeep(obj, defaults);
+        targets.push(manifest.target);
         let base = omit(manifest, [...types, 'params']);
 
         for (const t of types) {
@@ -22557,6 +22559,7 @@ async function main() {
     core.setOutput('ncp_matrix', fw['ncp-uart-hw']);
     core.setOutput('rcp_matrix', fw['rcp-uart-802154']);
     core.setOutput('ot_matrix', fw['ot-rcp']);
+    core.setOutput('targets', targets);
     return "Processing complete";
 }
 
