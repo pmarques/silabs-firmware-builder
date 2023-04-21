@@ -75,8 +75,6 @@ jobs:
         baudrate: [115200, 230400]
         include: ${{ fromJson(needs.build-matrix.outputs.ncp_matrix) }}
         exclude:
-          - target: zbdonglee-none
-            baudrate: 230400
           - target: yellow
             baudrate: 230400
           - target: skyconnect
@@ -106,7 +104,6 @@ jobs:
         baudrate: [460800, 921600]
         include: ${{ fromJson(needs.build-matrix.outputs.rcp_matrix) }}
         exclude:
-          - target: zbdongle-none
           - target: yellow
             baudrate: 921600
           - target: skyconnect
