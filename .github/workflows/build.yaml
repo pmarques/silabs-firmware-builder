@@ -80,6 +80,8 @@ jobs:
             baudrate: 230400
           - target: skyconnect
             baudrate: 230400
+          - target: elelabs-elx0x3
+            baudrate: 230400
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
       firmware_name: ncp-uart-hw-${{ matrix.target }}-${{ matrix.baudrate }}
@@ -109,6 +111,8 @@ jobs:
             baudrate: 921600
           - target: skyconnect
             baudrate: 921600
+          - target: elelabs-elx0x3
+            baudrate: 921600
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
       firmware_name: rcp-uart-802154-${{ matrix.target }}-${{ matrix.baudrate }}
@@ -137,6 +141,8 @@ jobs:
           - target: yellow
             baudrate: 230400
           - target: skyconnect
+            baudrate: 230400
+          - target: elelabs-elx0x3
             baudrate: 230400
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
