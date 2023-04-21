@@ -1,0 +1,15 @@
+{
+    "name": "Yellow",
+    "target": "yellow",
+    "device": "MGM210PA32JIA",
+    "ncp-uart-hw": {
+        "components": "simple_led:board_activity"
+    },
+    "rcp-uart-802154": {
+        "components": "simple_led:board_activity,cpc_security_secondary_none"
+
+    },
+    "ot-rcp": {
+        "components": "simple_led:board_activity,bootloader_interface"
+    }
+}

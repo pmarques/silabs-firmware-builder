@@ -1,0 +1,21 @@
+{
+    "name": "Default settings",
+    "target": "default",
+    "ncp-uart-hw": {
+        "configuration": {
+            "SL_IOSTREAM_USART_VCOM_RX_BUFFER_SIZE":64,
+            "EMBER_APS_UNICAST_MESSAGE_COUNT":20,
+            "EMBER_NEIGHBOR_TABLE_SIZE":26,
+            "EMBER_SOURCE_ROUTE_TABLE_SIZE":200
+        },
+        "extra_c_defs": "'-DEMBER_ADDRESS_TABLE_SIZE=16' '-DEMBER_MULTICAST_TABLE_SIZE=16'"
+    },
+    "rcp-uart-802154": {
+        "components": "cpc_security_secondary_none"
+    },
+    "ot-rcp": {
+        "components": "bootloader_interface",
+        "extra_c_defs": "'-DOPENTHREAD_CONFIG_NCP_REBOOT_BOOTLOADER_ENABLE=1'"
+    }
+
+}
