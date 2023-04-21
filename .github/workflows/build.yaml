@@ -58,14 +58,6 @@ jobs:
       - name: Process manifests
         id: process
         uses: ./.github/actions/manifest
-      - name: debug
-        run: |
-          echo "NCP matrix ------------"
-          echo "${{ toJSON(fromJSON(steps.process.outputs.ncp_matrix)) }}"
-          echo "RCP matrix ------------"
-          echo "${{ toJSON(fromJSON(steps.process.outputs.rcp_matrix)) }}"
-          echo "OT matrix ------------"
-          echo "${{ toJSON(fromJSON(steps.process.outputs.ot_matrix)) }}"
 
   ezsp-firmware-build:
     name: EmberZNet NCP
@@ -101,7 +93,6 @@ jobs:
     name: RCP Multi-PAN
     needs: [build-container, build-matrix]
     strategy:
-      fail-fast: false
       matrix:
         target: ${{ fromJson(needs.build-matrix.outputs.targets) }}
         baudrate: [460800, 921600]
@@ -132,7 +123,6 @@ jobs:
     name: OpenThread RCP
     needs: [build-container, build-matrix]
     strategy:
-      fail-fast: false
       matrix:
         target: ${{ fromJson(needs.build-matrix.outputs.targets) }}
         baudrate: [230400, 460800]
