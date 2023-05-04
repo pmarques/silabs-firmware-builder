@@ -90,7 +90,6 @@ jobs:
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       metadata_fw_type: "ncp-uart-hw"
       baudrate: ${{ matrix.baudrate }}
-      metadata_extra: "{ \"ezsp_version\": \"7.2.2.0\" }"
 
   rcp-multi-pan-firmware-build:
     name: RCP Multi-PAN
@@ -166,7 +165,6 @@ jobs:
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       metadata_fw_type: "ot-rcp"
       baudrate: ${{ matrix.baudrate }}
-      metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\" }"
 
   collect_artifacts:
     name: download and publish all artifacts

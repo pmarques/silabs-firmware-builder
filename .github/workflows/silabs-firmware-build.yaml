@@ -94,6 +94,24 @@ jobs:
               patch -p1 < $patch
           done
 
+      - name: Extract Version Metadata
+        if: "${{ inputs.metadata_fw_type }} != 'rcp-uart-802154'"
+        id: metadata_version
+        run: |
+          cd ${{ inputs.firmware_name }}
+          if [ ${{ inputs.metadata_fw_type }} == "ot-rcp" ]; then
+            key=ot_rcp_version
+            version=$(grep -w VERSION config/sl_openthread_generic_config.h | cut -d " " -f3)
+          elif [ ${{ inputs.metadata_fw_type }} == "ncp-uart-hw" ]; then
+            key=ezsp_version
+            version=$(grep -w ^version gecko_sdk_${{ inputs.sdk_version }}/protocol/zigbee/esf.properties | cut -d "=" -f2)
+          fi
+
+          json=$(jq --null-input --arg version "$version" --arg key "$key" \
+              '{"'"$key"'": $version}')
+          echo "json=${json}" | sed 's/"/\\"/g' >> $GITHUB_OUTPUT
+        shell: bash
+
       - name: Build Firmware
         run: |
           cd ${{ inputs.firmware_name }}
@@ -108,8 +126,9 @@ jobs:
                 "sdk_version": "${{ inputs.sdk_version }}",
                 "fw_type": "${{ inputs.metadata_fw_type }}",
                 "baudrate": ${{ inputs.baudrate }}
-              } + ${{ inputs.metadata_extra }}' >  version.json
-
+              } + ${{ inputs.metadata_extra }} 
+              + ${{ steps.metadata_version.outputs.json }}' >  version.json
+          echo version.json
       - name: Generate gbl Firmware
         run: |
           cd ${{ inputs.firmware_name }}
