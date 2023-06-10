@@ -24,7 +24,7 @@ description: >-
   in Home Assistant. Allow Zigbee and Thread to co-exist on the same dongle. Get ahead of the tech an experiment with Matter!
 domain: darkxst.github.io
 url: https://darkxst.github.io
-baseurl: "/sl-test/" # the Github repo name
+baseurl: "/silabs-firmware-builder/" # the Github repo name
 
 
 # Build settings
