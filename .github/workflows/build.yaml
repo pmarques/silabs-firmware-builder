@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 env:
-  sdk_version: 4.2.2
+  sdk_version: 4.3.0
 
 jobs:
   build-container:
@@ -87,7 +87,7 @@ jobs:
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       metadata_fw_type: "ncp-uart-hw"
       baudrate: ${{ matrix.baudrate }}
-      metadata_extra: "{ \"ezsp_version\": \"7.2.2.0\" }"
+      metadata_extra: "{ \"ezsp_version\": \"7.3.0.0\" }"
 
   rcp-multi-pan-firmware-build:
     name: RCP Multi-PAN
@@ -95,15 +95,15 @@ jobs:
     strategy:
       matrix:
         target: ${{ fromJson(needs.build-matrix.outputs.targets) }}
-        baudrate: [460800, 921600]
+        baudrate: [230400, 460800]
         include: ${{ fromJson(needs.build-matrix.outputs.rcp_matrix) }}
         exclude:
           - target: yellow
-            baudrate: 921600
+            baudrate: 230400
           - target: skyconnect
-            baudrate: 921600
+            baudrate: 230400
           - target: elelabs-elx0x3
-            baudrate: 921600
+            baudrate: 230400
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
       firmware_name: rcp-uart-802154-${{ matrix.target }}-${{ matrix.baudrate }}
@@ -148,7 +148,7 @@ jobs:
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       metadata_fw_type: "ot-rcp"
       baudrate: ${{ matrix.baudrate }}
-      metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.2.2.0_GitHub-91fa1f455\" }"
+      metadata_extra: "{ \"ot_rcp_version\": \"SL-OPENTHREAD/2.3.0.0_GitHub-dae3ff2c5\" }"
 
   collect_artifacts:
     name: download and publish all artifacts
