@@ -76,6 +76,10 @@ jobs:
             baudrate: 230400
           - target: elelabs-elx0x3
             baudrate: 230400
+          - target: beeline-mg1b
+            baudrate: 115200
+          - target: beeline-mg1b
+            baudrate: 230400
     uses: ./.github/workflows/silabs-firmware-build.yaml
     with:
       firmware_name: ncp-uart-hw-${{ matrix.target }}-${{ matrix.baudrate }}

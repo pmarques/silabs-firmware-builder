@@ -1,0 +1,15 @@
+{
+    "name": "Beeline-MG1B",
+    "target": "beeline-mg1b",
+    "device": "EFR32MG1B232F256GM48",
+    "rcp-uart-802154": {
+        "configuration": {
+            "SL_CPC_DRV_UART_VCOM_FLOW_CONTROL_TYPE":"usartHwFlowControlNone"
+        }
+    },
+    "ot-rcp": {
+        "configuration": {
+            "SL_UARTDRV_USART_VCOM_FLOW_CONTROL_TYPE":"usartHwFlowControlNone"
+        }
+    }
+}
