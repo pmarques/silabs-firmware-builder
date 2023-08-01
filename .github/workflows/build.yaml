@@ -191,19 +191,21 @@ jobs:
           path: firmware_builds
       - name: Reorganise artifact structure
         run: |
-          mv */*.gbl .
-          rm -rf *cp-uart-*/ ot-rcp*/
-          find ./ -maxdepth 1 -name "*zbdongle*.gbl" ! -name "*460*" | while read f
-          do
-              new=$(echo $f | sed "s/zbdonglee/zb-gw04-1v1/")
-              cp $f $new
-          done
-
+          set -e
           targets="skyconnect yellow zb-gw04-1v1 zb-gw04-1v2 zbdonglee"
           for t in $targets; do
                   mkdir -p $t
-                  find . -maxdepth 1 -type f -name "*$t*" -exec mv {} "$t" \;
+
+                  find *cp-uart-*/ -maxdepth 1 -type f -name "*$t*.gbl" -exec sh -c 'cp "$0" "$1/$(basename "$0")"' {} "$t" \;
           done
+
+          find *cp-uart-*/ -maxdepth 1 -type f -name "*zbdongle*.gbl" ! -name "*460*" | while read f
+          do
+              new=$(basename $f | sed "s/zbdonglee/zb-gw04-1v1/")
+              cp $f zb-gw04-1v1/$new
+          done
+
+          rm -rf *cp-uart-*/
         working-directory: firmware_builds
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
