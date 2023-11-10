@@ -1,8 +1,5 @@
 {
     "name": "SLZB-07",
     "target": "slzb-07",
-    "device": "EFR32MG21A020F768IM32",
-    "params": {
-        "SL_DEVICE_INIT_HFXO_CTUNE":80
-    }
+    "device": "EFR32MG21A020F768IM32"
 }
