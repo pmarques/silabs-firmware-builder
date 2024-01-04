@@ -115,6 +115,7 @@ jobs:
       project_name: "rcp-uart-802154"
       device: ${{ matrix.device }}
       components: ${{ matrix.components }}
+      without_components: ${{ matrix.without_components }}
       configuration: ${{ matrix.configuration }}
       patchpath: "RCPMultiPAN/${{ matrix.name }}"
       sdkpatchpath: "RCPMultiPAN/GeckoSDK"

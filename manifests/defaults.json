@@ -12,7 +12,8 @@
         "extra_c_defs": "'-DEMBER_ADDRESS_TABLE_SIZE=16' '-DEMBER_MULTICAST_TABLE_SIZE=16'"
     },
     "rcp-uart-802154": {
-        "components": "cpc_security_secondary_none,zigbee_mfglib"
+        "components": "cpc_security_secondary_none,zigbee_mfglib",
+        "without_components": "ot_rcp_gp_interface"
     },
     "ot-rcp": {
         "components": "bootloader_interface",
