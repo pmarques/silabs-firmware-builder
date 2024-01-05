@@ -85,6 +85,7 @@ jobs:
       components: ${{ matrix.components }}
       configuration: ${{ matrix.configuration }}
       patchpath: "EmberZNet/${{ matrix.name }}"
+      slcp_yaml_changes: ${{ matrix.slcp_yaml_changes }}
       extra_c_defs: ${{ matrix.extra_c_defs }}
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       metadata_fw_type: "ncp-uart-hw"
@@ -119,6 +120,7 @@ jobs:
       configuration: ${{ matrix.configuration }}
       patchpath: "RCPMultiPAN/${{ matrix.name }}"
       sdkpatchpath: "RCPMultiPAN/GeckoSDK"
+      slcp_yaml_changes: ${{ matrix.slcp_yaml_changes }}
       extra_c_defs: ${{ matrix.extra_c_defs }}
       sdk_version: ${{ needs.build-container.outputs.sdk_version}}
       baudrate: ${{ matrix.baudrate }}

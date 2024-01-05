@@ -13,7 +13,8 @@
     },
     "rcp-uart-802154": {
         "components": "cpc_security_secondary_none,zigbee_mfglib",
-        "without_components": "ot_rcp_gp_interface"
+        "without_components": "ot_rcp_gp_interface",
+        "slcp_yaml_changes": ". += {\"sdk_extension\": [{\"id\": \"nc_efr32_watchdog\", \"version\": \"1.0.0\"}]} | .component += [{\"from\": \"nc_efr32_watchdog\", \"id\": \"nc_efr32_watchdog\"}]"
     },
     "ot-rcp": {
         "components": "bootloader_interface",
