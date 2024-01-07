@@ -1,7 +1,15 @@
 # Silicon Labs firmware builder repository
 
 This repository contains Dockerfiles and GitHub actions which build Silicon Labs
-firmware for Home Assistant Yellow and SkyConnect, Sonoff ZBDongle-E and EasyIot ZB-GW04 v1.1 and v1.2.
+firmware.
+
+Supported hardware:
+* Sonoff ZBDongle-E
+* Sonoff iHost (use ZBDongle-E firmwares)
+* EasyIot ZB-GW04 v1.1 and v1.2
+* Elelabs ELU013 and Raspi Shield
+* Smlight SLZB-07 (may require unlocked [bootloader](https://github.com/darkxst/silabs-firmware-builder/raw/main/firmware_builds/slzb-07/BTL_SLZB07.gbl) first)
+* Sparkfun Things Matter MGM240P (requires [bootloader](https://github.com/darkxst/silabs-firmware-builder/blob/main/firmware_builds/mgm240p/bootloader-uart-xmodem_NCP.hex) to be flashed first using Silabs [Simplicity Commander](https://community.silabs.com/s/article/simplicity-commander?language=en_US))
 
 It uses the Silicon Labs Gecko SDK and proprietary Silicon Labs tools such as
 the Silicon Labs Configurator (slc) and the Simplicity Commander standalone
