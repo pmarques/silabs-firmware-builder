@@ -69,7 +69,18 @@ Easyiot ZB-GW04 Revision v1.1 - No flow control
 -----
 
 
+## SMLIGHT SLZB07
+SMLIGHT SLZB07 -  Hardware flow control  
+![SLZB-07](./assets/images/SLZB-07.png)  
 
+<div class="Supported">
+    <nabucasa-zigbee-flasher manifest="./assets/manifests/SLZB07.json">
+        <span slot="button">Connect</span>
+    </nabucasa-zigbee-flasher>
+</div>
+<br>
+
+-----
 
 <script>
     if(!navigator.serial){
