@@ -10,8 +10,9 @@ This page allows you to flash Silicon Labs EFR32MG21 based Zigbee dongles direct
 Supported devices:
 * Sonoff ZBDongle-E
 * Easyiot ZB-GW04
+* SMLIGHT SLZB-07
 
-It will install the most recent builds from [darkxst/silabs-firmware-builder](https://github.com/darkxst/silabs-firmware-builder)  
+It will install the most recent recommended builds from [darkxst/silabs-firmware-builder](https://github.com/darkxst/silabs-firmware-builder). If you want the very latest builds, you can use `Custom URL` option.  
 
 ### Start by clicking `Connect` for your device below.
 
