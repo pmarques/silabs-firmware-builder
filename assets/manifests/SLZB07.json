@@ -15,7 +15,7 @@
 	"firmwares": [
 		{
 			"name": "Zigbee (EZSP)",
-			"url": "https://raw.githubusercontent.com/darkxst/silabs-firmware-builder/main/firmware_builds/slzb-07/ncp-uart-hw-v7.3.2.0-slzb-07-230400.gbl",
+			"url": "https://raw.githubusercontent.com/darkxst/silabs-firmware-builder/main/firmware_builds/slzb-07/ncp-uart-hw-v7.3.2.0-slzb-07-115200.gbl",
 			"type": "ncp-uart-hw",
 			"version": "7.3.2.0"
 		},
