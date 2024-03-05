@@ -1,5 +1,10 @@
 {
     "name": "SkyConnect",
     "target": "skyconnect",
-    "device": "EFR32MG21A020F512IM32"
+    "device": "EFR32MG21A020F512IM32",
+    "ncp-uart-hw": {
+        "configuration": {
+            "SL_IOSTREAM_USART_VCOM_FLOW_CONTROL_TYPE":"uartFlowControlSoftware"
+        }
+    }
 }
