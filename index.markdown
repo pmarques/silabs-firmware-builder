@@ -90,11 +90,7 @@ SMLIGHT SLZB-07 -  Hardware flow control
 - Zigbee and multiPAN RCP (Zigbee+Thread/Matter) work Ethernet, Wi-Fi and USB modes, Thread RCP works in USB mode only (current limitations of HA add-ons).  
 ![SMLIGHT SLZB-06M](./assets/images/slzb-06m.png)  
 
-Prepare device for flashing and usage:
-1. Go to the device's [web-interface](http://slzb-06m.local/) and 
-- `Mode` -> set `Zigbee-to-USB` and make Enabled checkbox `Keep ON WiFi/Ethernet network & web server`, Reboot.
-- `Settings and Tools` -> `General settings` -> click `Zigbee Flash mode` 
-2. Start Flashing by the link below
+[Manual: How to Flash the SLZB-06M via darkxst's silabs web-flasher/firmware-builder](https://smlight.tech/manual/slzb-06/guide/thread-matter/).  
 
 <div class="Supported">
     <nabucasa-zigbee-flasher manifest="./assets/manifests/smlight-slzb-06m.json">
