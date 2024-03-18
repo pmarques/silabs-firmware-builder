@@ -21,9 +21,9 @@
 		},
 		{
 			"name": "Multi-PAN (RCP)",
-			"url": "https://raw.githubusercontent.com/darkxst/silabs-firmware-builder/main/firmware_builds/slzb-06m/rcp-uart-802154-v4.4.1-slzb-06m-460800.gbl",
+			"url": "https://raw.githubusercontent.com/darkxst/silabs-firmware-builder/main/firmware_builds/slzb-06m/rcp-uart-802154-v4.3.1-slzb-06m-460800.gbl",
 			"type": "rcp-uart-802154",
-			"version": "4.4.1"
+			"version": "4.3.1"
 		},
 		{
 			"name": "OpenThread",
