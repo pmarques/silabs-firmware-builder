@@ -11,16 +11,17 @@ Supported devices:
 * Sonoff ZBDongle-E
 * Easyiot ZB-GW04
 * SMLIGHT SLZB-07
+* SMLIGHT SLZB-06M
 
 It will install the most recent recommended builds from [darkxst/silabs-firmware-builder](https://github.com/darkxst/silabs-firmware-builder). If you want the very latest builds, you can use `Custom URL` option.  
 
 ### Start by clicking `Connect` for your device below.
 
 You can select from these firmware:
-* EZSP - Standard Zigbee (NCP) firmware - Baudrate 115200
-* MultiPAN RCP - Zigbee + Thread for Silabs Multiprotocol Addon - Baudrate 460800 (230400 for ZB-GW04)
-* Openthread RCP - Thread Only - Baudrate 460800 (230400 for ZB-GW04)
-* Upload Custom - Provide a custom .gbl firmware file
+* **EZSP** - Standard Zigbee (NCP) firmware - Baudrate 115200
+* **MultiPAN RCP** - Zigbee + Thread for Silabs Multiprotocol Addon - Baudrate 460800 (230400 for ZB-GW04)
+* **Openthread RCP** - Thread Only - Baudrate 460800 (230400 for ZB-GW04)
+* **Upload Custom** - Provide a custom .gbl firmware file
 
 ***NOTE:** Make sure to close anything using your devices serial port (e.g. ZHA, Zigbee2MQTT, Silabs Multiprotocol Add-on)*
 
@@ -70,12 +71,29 @@ Easyiot ZB-GW04 Revision v1.1 - No flow control
 -----
 
 
-## SMLIGHT SLZB07
-SMLIGHT SLZB07 -  Hardware flow control  
-![SLZB-07](./assets/images/SLZB-07.png)  
+## SMLIGHT SLZB-07
+SMLIGHT SLZB-07 -  Hardware flow control  
+![SMLIGHT SLZB-07](./assets/images/slzb-07.png)  
 
 <div class="Supported">
     <nabucasa-zigbee-flasher manifest="./assets/manifests/SLZB07.json">
+        <span slot="button">Connect</span>
+    </nabucasa-zigbee-flasher>
+</div>
+<br>
+
+-----
+
+
+## SMLIGHT SLZB-06M 
+- SMLIGHT SLZB-06M -  No hardware flow control  
+- Zigbee and multiPAN RCP (Zigbee+Thread/Matter) work Ethernet, Wi-Fi and USB modes, Thread RCP works in USB mode only (current limitations of HA add-ons).  
+![SMLIGHT SLZB-06M](./assets/images/slzb-06m.png)  
+
+[Manual: How to Flash the SLZB-06M via darkxst's silabs web-flasher/firmware-builder](https://smlight.tech/manual/slzb-06/guide/thread-matter/).  
+
+<div class="Supported">
+    <nabucasa-zigbee-flasher manifest="./assets/manifests/smlight-slzb-06m.json">
         <span slot="button">Connect</span>
     </nabucasa-zigbee-flasher>
 </div>
