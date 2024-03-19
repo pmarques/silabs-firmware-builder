@@ -93,7 +93,7 @@ SMLIGHT SLZB-07 -  Hardware flow control
 [Manual: How to Flash the SLZB-06M via darkxst's silabs web-flasher/firmware-builder](https://smlight.tech/manual/slzb-06/guide/thread-matter/).  
 
 <div class="Supported">
-    <nabucasa-zigbee-flasher manifest="./assets/manifests/smlight-slzb-06m.json">
+    <nabucasa-zigbee-flasher manifest="./assets/manifests/slzb-06m.json">
         <span slot="button">Connect</span>
     </nabucasa-zigbee-flasher>
 </div>
