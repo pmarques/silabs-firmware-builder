@@ -16,8 +16,7 @@ RUN \
        default-jre-headless \
        patch \
        python3 \
-       unzip \
-       xz-utils
+       unzip
 
 # Install Simplicity Commander (unfortunately no stable URL available, this
 # is known to be working with Commander_linux_x86_64_1v15p0b1306.tar.bz).
@@ -38,15 +37,15 @@ RUN \
 
 ENV PATH="$PATH:/opt/slc_cli"
 
-ARG GCC_ARM_VERSION="12.2.rel1"
+ARG GCC_ARM_VERSION="10.3-2021.10"
 
 # Install ARM GCC embedded toolchain
 RUN \
-    curl -O https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu/${GCC_ARM_VERSION}/binrel/arm-gnu-toolchain-${GCC_ARM_VERSION}-x86_64-arm-none-eabi.tar.xz \
-    && tar -C /opt -xJf arm-gnu-toolchain-${GCC_ARM_VERSION}-x86_64-arm-none-eabi.tar.xz \
-    && rm arm-gnu-toolchain-${GCC_ARM_VERSION}-x86_64-arm-none-eabi.tar.xz
+    curl -O https://armkeil.blob.core.windows.net/developer/Files/downloads/gnu-rm/${GCC_ARM_VERSION}/gcc-arm-none-eabi-${GCC_ARM_VERSION}-x86_64-linux.tar.bz2 \
+    && tar -C /opt -xjf gcc-arm-none-eabi-10.3-2021.10-x86_64-linux.tar.bz2 \
+    && rm gcc-arm-none-eabi-${GCC_ARM_VERSION}-x86_64-linux.tar.bz2
 
-ENV PATH="$PATH:/opt/arm-gnu-toolchain-${GCC_ARM_VERSION}-x86_64-arm-none-eabi/bin"
+ENV PATH="$PATH:/opt/gcc-arm-none-eabi-${GCC_ARM_VERSION}/bin"
 
 ARG GECKO_SDK_VERSION="v4.4.0"
 
@@ -71,5 +70,5 @@ RUN \
            --sdk="/gecko_sdk/" \
     && slc signature trust --sdk "/gecko_sdk/" \
     && slc configuration \
-           --gcc-toolchain="/opt/arm-gnu-toolchain-${GCC_ARM_VERSION}-x86_64-arm-none-eabi/"
+           --gcc-toolchain="/opt/gcc-arm-none-eabi-${GCC_ARM_VERSION}/"
 
