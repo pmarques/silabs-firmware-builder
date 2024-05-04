@@ -2,10 +2,10 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-dockerfile
 {
 	"name": "Silabs Firmware Builder",
-	"image": "ghcr.io/darkxst/silabs-firmware-builder:4.4.2",
+	"image": "ghcr.io/darkxst/silabs-firmware-builder:4.4.3",
 
     "containerEnv": {
-        "GECKO_SDK_VERSION": "v4.4.2"
+        "GECKO_SDK_VERSION": "v4.4.3"
     }
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
